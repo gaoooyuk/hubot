@@ -42,10 +42,10 @@ competitors = [
 ]
 
 config = 
-  consumer_key: ''
-  consumer_secret: ''
-  access_token: ''
-  access_token_secret: ''
+  consumer_key: '4V3XitczeERMNOzbNs75zX72r'
+  consumer_secret: 'Dx3g5VHRwekxRqHkCkKSOI3pczof8clj15fxe2fQKUq3mJBQWe'
+  access_token: '4915855254-9tRQTHgKRqENQ4soB3mimRoznrAVdMtgsjl6Aqf'
+  access_token_secret: '0W7BtqRbWqSVR7kvZVsKmLOrJOaSQviI3vn6q1DtGDNVd'
   timeout_ms: 60 * 1000
 
 twitterBot = new TB(config)
