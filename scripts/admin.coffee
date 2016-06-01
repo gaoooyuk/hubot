@@ -47,7 +47,9 @@ module.exports = (robot) ->
 						msg.send "DB: dump failed: " + stderr1
 					else
 						msg.send "(1/3) DB dump success"
-						cmt = 'git commit -m ' + (new Date).getTime()
+						t = (new Date).getTime()
+						cmt = 'git commit -m ' + t
+						msg.send "DB: commit #{t}"
 						child_process.exec cmt, { cwd: '/backup/' }, (error2, stdout2, stderr2) ->
 							if error2
 								msg.send "DB: commit failed: " + stderr2
