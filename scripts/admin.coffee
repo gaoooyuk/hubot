@@ -48,7 +48,7 @@ module.exports = (robot) ->
 					else
 						msg.send "(1/3) DB dump success"
 						t = (new Date).getTime()
-						cmt = 'git commit -m ' + t
+						cmt = 'git commit -m \"#{t}\"'
 						msg.send "DB: commit #{t}"
 						child_process.exec cmt, { cwd: '/backup/' }, (error2, stdout2, stderr2) ->
 							if error2
