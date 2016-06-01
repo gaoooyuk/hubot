@@ -2,7 +2,6 @@ child_process = require 'child_process'
 
 module.exports = (robot) ->
 	robot.respond /blog sync/i, (msg) ->
-		changes = false
 		try
 			msg.send "Blog: git pull..."
 			child_process.exec 'git pull', { cwd: '/VNK/value/blog/' }, (error, stdout, stderr) ->
@@ -12,7 +11,6 @@ module.exports = (robot) ->
 					output = stdout + ''
 					if not /Already up\-to\-date/.test output
 						msg.send "Blog: source code changed:\n" + output
-						changes = true
 					else
 						msg.send "Blog is up-to-date"
 		catch error
