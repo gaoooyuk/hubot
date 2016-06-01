@@ -55,7 +55,7 @@ module.exports = (robot) ->
 								msg.send "DB: commit failed: " + stderr2
 							else
 								msg.send "(2/3) DB commit success"
-								child_process.exec 'git push -u origin master', { cwd: '/backup/' }, (error3, stdout3, stderr3) ->
+								child_process.exec 'git push origin master', { cwd: '/backup/' }, (error3, stdout3, stderr3) ->
 									if error3
 										msg.send "DB: backup failed: " + stderr3
 									else
