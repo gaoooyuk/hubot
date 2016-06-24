@@ -37,6 +37,19 @@ module.exports = (robot) ->
 				else
 					msg.send "VNK - change app remote config *failed*"
 
+	robot.respond /admin -spd (.*) (.*) (.*)/i, (msg) ->
+		id = msg.match[1]
+		k = msg.match[2]
+		v = msg.match[3]
+		data = JSON.stringify({ pid: id, key: k, value: v })
+		robot.http("http://gimletech.com/analysis/setPortfolioIdeasStats")
+			.header('Content-Type', 'application/json')
+			.post(data) (err, res, body) ->
+				if res is "success"
+					msg.send "Portfolio(#{id}) updated *successfully*"
+				else
+					msg.send "Update portfolio(#{id}) *failed*"
+
 	robot.respond /admin db (.*)/i, (msg) ->
 		cmd = msg.match[1]
 		if cmd is "backup"
@@ -48,7 +61,7 @@ module.exports = (robot) ->
 					else
 						msg.send "(1/3) DB dump success"
 						t = (new Date).getTime()
-						cmt = 'git commit -m \"#{t}\"'
+						cmt = 'git commit -m \"' + t + '\"'
 						msg.send "DB: commit #{t}"
 						child_process.exec cmt, { cwd: '/backup/' }, (error2, stdout2, stderr2) ->
 							if error2
